@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIT INDIA Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Live Video Background -->
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-strong-man-training-his-biceps-at-the-gym-22129-large.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>FIT INDIA</h2>
+                <p>Elite Access</p>
+            </div>
+            <ul class="nav-links">
+                <li><button class="nav-btn active" data-tab="overview"><i data-lucide="layout-grid"></i> Overview</button></li>
+                <li><button class="nav-btn" data-tab="analytics"><i data-lucide="bar-chart-2"></i> Analytics</button></li>
+                <li><button class="nav-btn" data-tab="settings"><i data-lucide="settings"></i> Settings</button></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="upgrade-wrapper" id="upgrade-section">
+                    <button class="btn-upgrade" id="btn-upgrade" style="width: 100%;">Upgrade Plan</button>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar"><i data-lucide="user"></i></div>
+                    <div class="user-info">
+                        <h4>User@134</h4>
+                        <p>Director of Operations</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="top-header">
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    Live Now
+                </div>
+                <button class="icon-btn"><i data-lucide="bell"></i></button>
+                <div class="avatar" style="width:36px; height:36px; border:none; background-color:var(--surface-3);"><i data-lucide="user" style="width:18px; color:var(--text-primary);"></i></div>
+            </div>
+
+            <div id="skeleton-loader" class="skeleton-wrapper active">
+                <div class="skeleton-banner skeleton"></div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-card skeleton"></div>
+                    <div class="skeleton-card skeleton"></div>
+                    <div class="skeleton-card skeleton"></div>
+                    <div class="skeleton-card skeleton"></div>
+                </div>
+            </div>
+
+            <div id="content-area" class="content-wrapper">
+                <!-- Overview Tab -->
+                <section id="overview" class="tab-pane active">
+                    <div class="welcome-banner">
+                        <div class="banner-content">
+                            <h1>Morning, User</h1>
+                            <p>Real-time performance metrics for Elite Fitness today.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="card-icon-wrapper"><i data-lucide="star"></i></div>
+                            <div class="card-info">
+                                <h3>Elite</h3>
+                                <span class="label">Active Plan</span>
+                                <span class="subtext">Pro Member</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="card-header-flex">
+                                <div class="card-icon-wrapper"><i data-lucide="activity"></i></div>
+                                <span class="badge outline">+3 this week</span>
+                            </div>
+                            <div class="card-info">
+                                <h3>143 <span style="color:var(--accent-secondary); font-size:0.8rem;">●</span></h3>
+                                <span class="label">Total Sessions</span>
+                                <span class="subtext">All time</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="card-header-flex">
+                                <div class="card-icon-wrapper"><i data-lucide="zap"></i></div>
+                                <span class="badge live">Live</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 id="reward-points-counter">3,865 <span style="color:var(--accent-secondary); font-size:0.8rem;">●</span></h3>
+                                <span class="label">Fit Points</span>
+                                <span class="subtext">Points earned</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="card-icon-wrapper"><i data-lucide="calendar"></i></div>
+                            <div class="card-info">
+                                <h3>Aug 15</h3>
+                                <span class="label">Expiry Date</span>
+                                <span class="subtext">2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="padding: 3.5rem; margin-top: 1rem;">
+                        <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 1.5rem; font-weight: 700; letter-spacing: -0.5px;">The Beast Philosophy</h2>
+                        <p style="color: var(--accent-secondary); font-size: 1.25rem; line-height: 1.8; font-weight: 400; max-width: 900px;">
+                            Welcome to the ultimate proving ground. Here, we believe that true transformation requires <span style="color: #d32f2f; font-weight: 700;">unrelenting dedication</span> and the willingness to push beyond your perceived limits. Our elite facility is designed to strip away distractions and focus entirely on authentic progress. You are not just building muscle; you are forging an <span style="color: #d32f2f; font-weight: 700;">unbreakable mindset</span>. Embrace the grind, master the discipline, and become the most powerful version of yourself.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Analytics Tab -->
+                <section id="analytics" class="tab-pane">
+                    <div class="stat-card" style="margin-bottom: 1.5rem; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 3rem 2.5rem; flex-wrap: wrap; gap: 1rem; background: linear-gradient(to right, rgba(17, 17, 17, 0.95) 40%, rgba(17, 17, 17, 0.6) 100%), url('https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=1471&auto=format&fit=crop') no-repeat center center; background-size: cover; border: 1px solid var(--border-color); border-radius: 12px; position: relative;">
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">Membership Analysis</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Select a timeframe to update all analytics across the dashboard.</p>
+                        </div>
+                        <div class="toggle-group" id="global-time-toggle">
+                            <button class="toggle-btn" data-period="weekly">Weekly</button>
+                            <button class="toggle-btn active" data-period="monthly">Monthly</button>
+                            <button class="toggle-btn" data-period="yearly">Yearly</button>
+                        </div>
+                    </div>
+
+                    <div class="bottom-grid" style="margin-bottom: 2rem;">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <div>
+                                    <h3>Daily Attendance</h3>
+                                    <p>Average hourly foot traffic across all locations</p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="side-cards">
+                            <div class="info-card" id="facility-capacity-card" style="cursor: pointer;">
+                                <h4><i data-lucide="users" style="color:var(--accent-primary); margin-right:0.5rem; vertical-align:middle;"></i> Facility Capacity</h4>
+                                <div class="capacity-display">
+                                    <h2><span id="attendance-percentage-value">78%</span> <span class="trend"><i data-lucide="trending-up"></i> +5%</span></h2>
+                                    <p style="color: #888888;">Attendance Percentage</p>
+                                    <p style="margin-top: 1.5rem; text-align: left; font-size: 0.75rem; color: #888888; font-weight:600; text-transform:uppercase;">vs previous</p>
+                                </div>
+                            </div>
+                            <div class="info-card" id="trainers-card" style="cursor: pointer;">
+                                <h4>Personal Trainers</h4>
+                                <p style="color:var(--text-tertiary); margin-bottom: 0.5rem; font-weight:500;">9 trainers currently active</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-grid" style="grid-template-columns: 2fr 2fr 1.2fr; gap: 1.5rem; margin-bottom: 2rem;">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <div>
+                                    <h3>Membership Usage Breakdown</h3>
+                                    <p>Distribution of activities</p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper" style="height: 280px;">
+                                <canvas id="doughnutChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <div>
+                                    <h3>Session Duration</h3>
+                                    <p>Time spent in gym (30 min intervals)</p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper" style="height: 280px;">
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; justify-content: space-between;">
+                            <div class="stat-card" style="padding: 1.25rem; flex: 1; display: flex; flex-direction: row; align-items: center; gap: 1rem;">
+                                <div class="card-icon-wrapper" style="width: 44px; height: 44px; margin: 0; flex-shrink: 0;"><i data-lucide="clock"></i></div>
+                                <div class="card-info">
+                                    <h3 id="stat-avg-time" style="font-size: 1.25rem;">1h 15m</h3>
+                                    <span class="label" style="font-size: 0.8rem; margin: 0;">Avg. Gym Time</span>
+                                </div>
+                            </div>
+                            <div class="stat-card" style="padding: 1.25rem; flex: 1; display: flex; flex-direction: row; align-items: center; gap: 1rem;">
+                                <div class="card-icon-wrapper" style="width: 44px; height: 44px; margin: 0; flex-shrink: 0;"><i data-lucide="flame"></i></div>
+                                <div class="card-info">
+                                    <h3 id="stat-calories" style="font-size: 1.25rem;">8,500 <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">kcal</span></h3>
+                                    <span class="label" style="font-size: 0.8rem; margin: 0;">Total Calories Burned</span>
+                                </div>
+                            </div>
+                            <div class="stat-card" style="padding: 1.25rem; flex: 1; display: flex; flex-direction: row; align-items: center; gap: 1rem;">
+                                <div class="card-icon-wrapper" style="width: 44px; height: 44px; margin: 0; flex-shrink: 0;"><i data-lucide="heart-handshake"></i></div>
+                                <div class="card-info">
+                                    <h3 id="stat-retention" style="font-size: 1.25rem;">94%</h3>
+                                    <span class="label" style="font-size: 0.8rem; margin: 0;">Retention Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="margin-bottom: 2rem; padding: 2.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem;">
+                            <div class="card-icon-wrapper" style="background-color: rgba(66, 133, 244, 0.15); color: #4285f4; width: 50px; height: 50px; border: 1px solid rgba(66, 133, 244, 0.3);"><i data-lucide="flag"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary);">Your Progress Goals</h3>
+                                <p style="font-size: 0.95rem; color: #888888;">Track your personal milestones</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <!-- Calories Burned -->
+                            <div class="progress-item">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <span style="font-weight: 500; font-size: 0.95rem; color: var(--text-primary);">Calories Burned</span>
+                                    <span style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);"><span id="goal-cal-current">850</span> <span style="color: #888888; font-weight: 500;">/ <span id="goal-cal-target">1000</span> kcal</span></span>
+                                </div>
+                                <div style="width: 100%; height: 10px; background-color: rgba(255, 255, 255, 0.08); border-radius: 5px; overflow: hidden;">
+                                    <div id="goal-cal-bar" style="width: 85%; height: 100%; background-color: #4285f4; border-radius: 5px; transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Weight Loss -->
+                            <div class="progress-item">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <span style="font-weight: 500; font-size: 0.95rem; color: var(--text-primary);">Weight Loss</span>
+                                    <span style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);"><span id="goal-weight-current">4.2</span> <span style="color: #888888; font-weight: 500;">/ <span id="goal-weight-target">5.0</span> kg</span></span>
+                                </div>
+                                <div style="width: 100%; height: 10px; background-color: rgba(255, 255, 255, 0.08); border-radius: 5px; overflow: hidden;">
+                                    <div id="goal-weight-bar" style="width: 84%; height: 100%; background-color: #0f9d58; border-radius: 5px; transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
+                                </div>
+                            </div>
+
+                            <!-- Avg. Workout Time -->
+                            <div class="progress-item">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <span style="font-weight: 500; font-size: 0.95rem; color: var(--text-primary);">Avg. Workout Time</span>
+                                    <span style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);"><span id="goal-time-current">45</span> <span style="color: #888888; font-weight: 500;">/ <span id="goal-time-target">60</span> mins</span></span>
+                                </div>
+                                <div style="width: 100%; height: 10px; background-color: rgba(255, 255, 255, 0.08); border-radius: 5px; overflow: hidden;">
+                                    <div id="goal-time-bar" style="width: 75%; height: 100%; background-color: #a142f4; border-radius: 5px; transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Tab -->
+                <section id="settings" class="tab-pane">
+                    <div style="max-width: 600px;">
+                        <div class="settings-section">
+                            <h3>Profile Settings</h3>
+                            <form class="settings-form" onsubmit="event.preventDefault()" style="margin-top:1.5rem;">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" value="User 134">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" value="user134@fitindia.com">
+                                </div>
+                                <button type="button" class="btn-save" style="margin-top:1rem;">Save Changes</button>
+                            </form>
+                        </div>
+                        <div class="settings-section">
+                            <h3>Notification Preferences</h3>
+                            <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px;">Email Alerts</span>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px;">Session Reminders</span>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h3 style="color: #ea4335;">Account Actions</h3>
+                            <div style="margin-top:1.5rem; display:flex; gap:1rem;">
+                                <button type="button" style="background: transparent; color: #ea4335; border: 1px solid #ea4335; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(234, 67, 53, 0.1)'" onmouseout="this.style.background='transparent'">Log Out</button>
+                                <button type="button" style="background: transparent; color: #ea4335; border: 1px solid #ea4335; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(234, 67, 53, 0.1)'" onmouseout="this.style.background='transparent'">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Facility Modal -->
+    <div id="facility-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Attendance Details</h2>
+                <button id="close-modal-btn" class="close-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="attendance-stats">
+                    <div class="stat-box attended">
+                        <h3 id="modal-attended-val">5</h3>
+                        <p>Days Attended</p>
+                    </div>
+                    <div class="stat-box missed">
+                        <h3 id="modal-missed-val">2</h3>
+                        <p>Days Missed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Plans Modal -->
+    <div id="upgrade-modal" class="modal-overlay">
+        <div class="modal-content plans-modal-content">
+            <div class="modal-header">
+                <h2>Available Plans</h2>
+                <button id="close-upgrade-btn" class="close-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="plans-grid">
+                <!-- Basic Plan -->
+                <div class="plan-card" style="--anim-delay: 0.1s;">
+                    <div class="plan-header-ui">
+                        <h3>Starter Plan</h3>
+                    </div>
+                    <div class="plan-price" style="margin-bottom: 2rem;">
+                        <span class="price-val" style="font-size: 3.5rem; font-weight: 800; color: var(--text-primary); line-height: 1;">$29</span><span class="price-term" style="font-size: 1rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase;">/mo</span>
+                    </div>
+                    <div class="plan-details">
+                        <div class="detail-item">
+                            <div class="detail-icon" style="color:var(--text-primary); border-color:var(--border-color);"><i data-lucide="activity"></i></div>
+                            <div>
+                                <h4>Gym Access</h4>
+                                <p>Standard Equipment, Open Hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-get-started">Get Started</button>
+                </div>
+
+                <!-- Current Plan -->
+                <div class="plan-card active-plan" style="--anim-delay: 0.25s;">
+                    <div class="plan-header-ui">
+                        <h3>Elite Pro Plan</h3>
+                        <span class="badge live">Current</span>
+                    </div>
+                    <div class="plan-days">
+                        <span class="days-number">14</span>
+                        <span class="days-text">Days Left</span>
+                    </div>
+                    <div class="plan-details">
+                        <div class="detail-item">
+                            <div class="detail-icon"><i data-lucide="user"></i></div>
+                            <div>
+                                <h4>Personal Trainer</h4>
+                                <p>Marcus "The Mountain" Vance</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i data-lucide="check-circle"></i></div>
+                            <div>
+                                <h4>Benefits Included</h4>
+                                <p>24/7 Access, Free Supplements, Spa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-get-started">Get Started</button>
+                </div>
+
+                <!-- Next Plan -->
+                <div class="plan-card upgrade-plan" style="--anim-delay: 0.4s;">
+                    <div class="plan-header-ui">
+                        <h3>Beast Mode Tier</h3>
+                        <span class="badge upgrade">Upgrade</span>
+                    </div>
+                    <div class="plan-price" style="margin-bottom: 2rem;">
+                        <span class="price-val" style="font-size: 3.5rem; font-weight: 800; color: var(--accent-secondary); line-height: 1;">$99</span><span class="price-term" style="font-size: 1rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase;">/mo</span>
+                    </div>
+                    <div class="plan-details">
+                        <div class="detail-item">
+                            <div class="detail-icon"><i data-lucide="zap"></i></div>
+                            <div>
+                                <h4>Premium Perks</h4>
+                                <p>Priority Booking, Private Locker, Guest Passes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-get-started">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Trainers Modal -->
+    <div id="trainers-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px; padding: 2.5rem;">
+            <div class="modal-header">
+                <h2>Available Trainers Today</h2>
+                <button id="close-trainers-btn" class="close-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Trainer 1 -->
+                    <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div style="width: 50px; height: 50px; background: rgba(245, 230, 211, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-secondary);"><i data-lucide="user"></i></div>
+                            <div>
+                                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.2rem;">Marcus "The Mountain" Vance</h4>
+                                <p style="font-size: 0.85rem; color: #0f9d58; font-weight: 600;"><i data-lucide="clock" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 0.2rem;"></i> Available: 2:00 PM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Session</button>
+                    </div>
+
+                    <!-- Trainer 2 -->
+                    <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div style="width: 50px; height: 50px; background: rgba(245, 230, 211, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-secondary);"><i data-lucide="user"></i></div>
+                            <div>
+                                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.2rem;">Sarah "Swift" Jenkins</h4>
+                                <p style="font-size: 0.85rem; color: #0f9d58; font-weight: 600;"><i data-lucide="clock" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 0.2rem;"></i> Available: 5:00 PM - 9:00 PM</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Session</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

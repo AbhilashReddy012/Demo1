@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Membership Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <header class="header">
+        <div class="welcome">
+          <h1 id="welcome">Welcome back, <span id="username">Alex</span>!</h1>
+        </div>
+        <div class="datetime" id="datetime">Loading date…</div>
+      </header>
+
+      <section class="primary-row">
+        <div class="card card-pop">
+          <div class="card-top">
+            <h2 id="plan-name">Pro Fitness Tier</h2>
+            <span class="badge badge-active" id="plan-badge">Active</span>
+          </div>
+          <p class="plan-sub">Includes unlimited classes &amp; priority booking</p>
+        </div>
+
+        <div class="card">
+          <h3>Membership Expiry</h3>
+          <p class="renewal" id="renewal-date">Renews on: Oct 15, 2026</p>
+          <p class="remaining" id="days-left">14 days left</p>
+        </div>
+      </section>
+
+      <section class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true">
+            <!-- Dumbbell icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 8h-2v8h2V8zM6 8H4v8h2V8zM8 10h8v4H8v-4z" fill="currentColor" />
+            </svg>
+          </div>
+          <div>
+            <div class="stat-number" id="total-sessions">42</div>
+            <div class="stat-label">Total Sessions</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true">
+            <!-- Star icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 17.3l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.76L5.82 21z" fill="currentColor" />
+            </svg>
+          </div>
+          <div>
+            <div class="stat-number" id="reward-points">1,250</div>
+            <div class="stat-label">Rewards Points</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button class="btn primary" id="book-btn">Book a Class</button>
+        <button class="btn secondary" id="upgrade-btn">Upgrade Plan</button>
+        <button class="btn secondary" id="refer-btn">Refer a Friend</button>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
